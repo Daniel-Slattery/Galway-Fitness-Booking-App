@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your Bookings
+{% endblock %}
+
+{% block main %}
+    <section class="book_main_body">
+    <h3>Hi {{ name }}, your booked work-out times are shown below. See you soon!</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Time Slot</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td name="date">{{ booking["date"] }}</td>
+                    <td name="time">{{ booking["slot_id"] }}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    </section>
+
+{% endblock %}

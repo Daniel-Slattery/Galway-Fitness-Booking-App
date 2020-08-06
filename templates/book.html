@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Fill out form to book time slot
+{% endblock %}
+
+{% block main %}
+
+    <section class="book_main_body">
+        <h1>Current Slots Available</h1>
+        <table id="timetable" class="table table-striped">
+            <thead>
+                <td><strong>Time Slot</strong></td>
+                <td><strong>Vacancies Available Today</strong></td>
+                <td><strong>Vacancies Available Tomorrow</strong></td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>8am - 10 am</td>
+                    <td class="capacity">{{ slot1_capacity }}</td>
+                    <td class="capacity">{{ slot7_capacity }}</td>
+                </tr>
+                <tr>
+                    <td>10am - 12am</td>
+                    <td class="capacity">{{ slot2_capacity }}</td>
+                    <td class="capacity">{{ slot8_capacity }}</td>
+                </tr>
+                <tr>
+                    <td>12pm - 2pm</td>
+                    <td class="capacity">{{ slot3_capacity }}</td>
+                    <td class="capacity">{{ slot9_capacity }}</td>
+                </tr>
+                <tr>
+                    <td>2pm - 4pm</td>
+                    <td class="capacity">{{ slot4_capacity }}</td>
+                    <td class="capacity">{{ slot10_capacity }}</td>
+                </tr>
+                <tr>
+                    <td>4pm - 6pm</td>
+                    <td class="capacity">{{ slot5_capacity }}</td>
+                    <td class="capacity">{{ slot11_capacity }}</td>
+                </tr>
+                <tr>
+                    <td>6pm - 8pm</td>
+                    <td class="capacity">{{ slot6_capacity }}</td>
+                    <td class="capacity">{{ slot12_capacity }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <h3>Book Available Work-Out Time</h3>
+        <form action="/book" method="post">
+        <div class="form-group">
+                <label for="days">Choose a Day: </label>
+                <select name="day">
+                <option value="today">Today</option>
+                <option value="tomorrow">Tomorrow</option>
+                </select>
+                <label for="timeslot">Choose a Time: </label>
+                <select name="timeslot">
+                    <optgroup label="Morning">
+                        <option value="8am - 10am">8am - 10am</option>
+                        <option value="10am - 12pm">10am - 12pm</option>
+                    </optgroup>
+                    <optgroup label="Afternoon">
+                        <option value="12pm - 2pm">12pm - 2pm</option>
+                        <option value="2pm - 4pm">2pm - 4pm</option>
+                    </optgroup>
+                    <optgroup label="Evening">
+                        <option value="4pm - 6pm">4pm - 6pm</option>
+                        <option value="6pm - 8pm">6pm - 8pm</option>
+                    </optgroup>
+                </select>
+                <div class="book-form">
+                    <h4>Do you agree?</h4>
+                    <label for="wipe-down"> I agree to wipe down gym equipment with disinfectant after use</label>
+                    <input type="checkbox" name="wipe-down" required><br>
+                    <label for="sixFeet"> I agree to maintain 6 feet distance from others who are using the gym facilities</label>
+                    <input type="checkbox" name="sixFeet" required><br>
+                    <button type="submit" class="btn">Book Time!</button>
+                </div>
+        </div>
+    </div>
+</div>
+</form>
+</section>
+
+{% endblock %}
